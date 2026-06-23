@@ -253,7 +253,7 @@
     function onScroll(){
       const y = window.scrollY;
       if (state==='strip'){
-        gallery.style.bottom = liftCss(y);                       // lift tracks scroll continuously (no freeze)
+        if (!animating) gallery.style.bottom = liftCss(y);       // lift tracks scroll — but NEVER mid-flip, or it fights the reverse Flip (this was the bug)
         if (!animating && y >= triggerY) toGrid();               // forward at the line
       } else if (state==='grid' && !animating){
         if (y <= triggerY - BUFFER) toStrip();                   // reverse a gap below the line
