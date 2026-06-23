@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huxley Hall — Knights Developments</title>
+  <meta name="description" content="A new build mansion set in ten acres of grounds in rural Marlow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:ital,opsz,wght@1,9..144,300;0,9..144,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<!-- TEMPLATE: duplicate per project; swap title, facts, copy, and gallery images. -->
+<body data-page="project">
+
+  <!-- title-card intro (project name flashes, then wipes) -->
+  <div class="titlecard" aria-hidden="true"><span>Huxley Hall</span></div>
+
+  <header class="site-header site-header--solid">
+    <a class="brand" href="index.html">KNIGHTS</a>
+    <nav class="nav">
+      <a href="projects.html">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="smooth-content">
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="proj-hero__img" data-parallax style="--tone:#6b5a4a"></div>
+      <div class="proj-hero__head">
+        <h1 class="line"><span>Huxley Hall</span></h1>
+        <p class="proj-hero__loc">Marlow, Buckinghamshire</p>
+      </div>
+    </section>
+
+    <!-- KEY FACTS -->
+    <section class="facts">
+      <div class="fact"><span class="fact__k">Location</span><span class="fact__v">Marlow</span></div>
+      <div class="fact"><span class="fact__k">Status</span><span class="fact__v">Completion 2026</span></div>
+      <div class="fact"><span class="fact__k">Type</span><span class="fact__v">New-build country manor</span></div>
+      <div class="fact"><span class="fact__k">Grounds</span><span class="fact__v">10 acres</span></div>
+      <div class="fact"><span class="fact__k">Recognition</span><span class="fact__v">3 × International Property Awards</span></div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story">
+      <p class="story__text">
+        A new build mansion set in ten acres of grounds in rural Marlow, just 1.5 miles from the
+        thriving high street. This incredible property won three prestigious accolades at the
+        International Property Awards, including <em>Best Residential Property, United Kingdom.</em>
+      </p>
+    </section>
+
+    <!-- GALLERY (placeholder tones; drop real photos into assets/projects/huxley-hall/) -->
+    <section class="gallery">
+      <div class="gallery__item gallery__item--wide" data-parallax style="--tone:#6b5a4a"></div>
+      <div class="gallery__item" style="--tone:#7a6a55"></div>
+      <div class="gallery__item" style="--tone:#5d6657"></div>
+      <div class="gallery__item gallery__item--wide" data-parallax style="--tone:#6f6048"></div>
+      <div class="gallery__item" style="--tone:#736345"></div>
+      <div class="gallery__item" style="--tone:#586154"></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2 class="cta__title">Enquire about Huxley Hall</h2>
+      <a class="btn" href="mailto:enquiries@knightsdevelopments.com?subject=Huxley%20Hall">enquiries@knightsdevelopments.com</a>
+    </section>
+
+    <!-- PREV / NEXT -->
+    <nav class="proj-nav">
+      <a href="project.html" class="proj-nav__prev">← Brockwell Barn</a>
+      <a href="projects.html" class="proj-nav__all">All projects</a>
+      <a href="project.html" class="proj-nav__next">Foxleigh Place →</a>
+    </nav>
+
+    <footer class="site-footer">
+      <span>© Knights Developments 2026</span>
+      <span>Marlow · Warfield · Seer Green · Wheathampstead · Amersham</span>
+    </footer>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

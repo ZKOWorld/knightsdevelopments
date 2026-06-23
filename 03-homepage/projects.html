@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Knights Developments</title>
+  <meta name="description" content="Fifteen unique luxury developments across the Buckinghamshire countryside. Filter by status and location." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:ital,opsz,wght@1,9..144,300;0,9..144,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="projects">
+
+  <header class="site-header site-header--solid">
+    <a class="brand" href="index.html">KNIGHTS</a>
+    <nav class="nav">
+      <a href="projects.html" class="is-current">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="smooth-content">
+
+    <!-- ===== EDITORIAL INTRO ===== -->
+    <section class="projects-intro">
+      <h1 class="projects-intro__title">
+        <span class="line"><span>Unique luxury homes,</span></span>
+        <span class="line"><span>shaped by their <em>landscape.</em></span></span>
+      </h1>
+      <p class="projects-intro__sub">Fifteen developments across the Buckinghamshire countryside.</p>
+    </section>
+
+    <!-- ===== FILTER BAR ===== -->
+    <div class="filters">
+      <div class="filter-group" data-group="status">
+        <span class="filter-group__label">Status</span>
+        <button data-val="all" class="is-active">All</button>
+        <button data-val="launching">Launching Soon</button>
+        <button data-val="coming">Coming Soon</button>
+        <button data-val="completion">Completion 2026/27</button>
+        <button data-val="sold">Sold</button>
+      </div>
+      <div class="filter-group" data-group="loc">
+        <span class="filter-group__label">Location</span>
+        <button data-val="all" class="is-active">All</button>
+        <button data-val="marlow">Marlow</button>
+        <button data-val="warfield">Warfield</button>
+        <button data-val="seer-green">Seer Green</button>
+        <button data-val="wheathampstead">Wheathampstead</button>
+        <button data-val="amersham">Amersham</button>
+      </div>
+      <span class="filter-count" id="filterCount"></span>
+    </div>
+
+    <!-- ===== PROJECT GRID ===== -->
+    <section class="grid" id="grid">
+      <!-- To use real photos: add  style="--img:url('assets/projects/<slug>/cover.jpg')"  to .tile__img -->
+      <a class="tile" href="project.html" data-status="launching" data-loc="marlow">
+        <div class="tile__img" style="--tone:#7a6a55"></div>
+        <div class="tile__meta"><h3>Bramblewood Place</h3><span class="tile__loc">Marlow</span><span class="badge badge--live">Launching Soon</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="completion" data-loc="marlow">
+        <div class="tile__img" style="--tone:#6b5a4a"></div>
+        <div class="tile__meta"><h3>Huxley Hall</h3><span class="tile__loc">Marlow</span><span class="badge badge--soon">Completion 2026</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="launching" data-loc="warfield">
+        <div class="tile__img" style="--tone:#5d6657"></div>
+        <div class="tile__meta"><h3>Foxleigh Place</h3><span class="tile__loc">Warfield</span><span class="badge badge--live">Launching Soon</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="launching" data-loc="warfield">
+        <div class="tile__img" style="--tone:#6a7059"></div>
+        <div class="tile__meta"><h3>Foxleigh Farmhouse</h3><span class="tile__loc">Warfield</span><span class="badge badge--live">Launching Soon</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="completion" data-loc="marlow">
+        <div class="tile__img" style="--tone:#6f6048"></div>
+        <div class="tile__meta"><h3>Brockwell Barn</h3><span class="tile__loc">Marlow</span><span class="badge badge--soon">Completion 2027</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="seer-green">
+        <div class="tile__img" style="--tone:#7b6f5c"></div>
+        <div class="tile__meta"><h3>Maplebrook Manor</h3><span class="tile__loc">Seer Green</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="wheathampstead">
+        <div class="tile__img" style="--tone:#6c5b49"></div>
+        <div class="tile__meta"><h3>Bibbs Hall Barns</h3><span class="tile__loc">Wheathampstead</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="wheathampstead">
+        <div class="tile__img" style="--tone:#5f6a5a"></div>
+        <div class="tile__meta"><h3>Bibbs Hall Farmhouse</h3><span class="tile__loc">Wheathampstead</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="coming" data-loc="marlow">
+        <div class="tile__img" style="--tone:#586154"></div>
+        <div class="tile__meta"><h3>The Willows</h3><span class="tile__loc">Marlow</span><span class="badge badge--soon">Coming Soon</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="coming" data-loc="warfield">
+        <div class="tile__img" style="--tone:#736345"></div>
+        <div class="tile__meta"><h3>Windmill Farm</h3><span class="tile__loc">Warfield</span><span class="badge badge--soon">Coming Soon</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="seer-green">
+        <div class="tile__img" style="--tone:#6b6a52"></div>
+        <div class="tile__meta"><h3>Broadleaves</h3><span class="tile__loc">Seer Green</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="seer-green">
+        <div class="tile__img" style="--tone:#6e5d4d"></div>
+        <div class="tile__meta"><h3>Elmhurst Hall</h3><span class="tile__loc">Seer Green</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="amersham">
+        <div class="tile__img" style="--tone:#5c6453"></div>
+        <div class="tile__meta"><h3>Great Meadow Barn</h3><span class="tile__loc">Amersham</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="amersham">
+        <div class="tile__img" style="--tone:#75664f"></div>
+        <div class="tile__meta"><h3>The Farmhouse</h3><span class="tile__loc">Amersham</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <a class="tile" href="project.html" data-status="sold" data-loc="amersham">
+        <div class="tile__img" style="--tone:#6a5a48"></div>
+        <div class="tile__meta"><h3>The Old Tythe Barn</h3><span class="tile__loc">Amersham</span><span class="badge badge--sold">Sold</span></div>
+      </a>
+      <p class="grid__empty" id="gridEmpty" hidden>No developments match those filters. <button id="gridReset">View all</button></p>
+    </section>
+
+    <section class="cta">
+      <h2 class="cta__title">Can't see what you're looking for?</h2>
+      <a class="btn" href="mailto:enquiries@knightsdevelopments.com">Register your interest</a>
+    </section>
+
+    <footer class="site-footer">
+      <span>© Knights Developments 2026</span>
+      <span>Marlow · Warfield · Seer Green · Wheathampstead · Amersham</span>
+    </footer>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

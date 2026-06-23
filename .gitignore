@@ -1,0 +1,18 @@
+# --- Large local-only reference assets (kept on disk, not versioned) ---
+*.mp4
+*.mov
+*.mkv
+01-research/boards/
+
+# --- Node / build ---
+node_modules/
+package-lock.json
+dist/
+.cache/
+
+# --- Editor / OS ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
