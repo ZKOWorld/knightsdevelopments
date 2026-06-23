@@ -33,7 +33,7 @@
   nav{display:flex;gap:1.6rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:0}
 
   /* HERO: title+filter centred between the nav and the "See all" link; "See all" sits just above the images */
-  .hero{height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;padding:6vh 0 36vh}
+  .hero{height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;padding:6vh clamp(1.5rem,6vw,6rem) 36vh}
   .hero__head{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease, transform .6s ease}
   .hero__head.gone{opacity:0;transform:translateY(-5vh)}
   .title{font-weight:700;text-transform:uppercase;font-size:clamp(2rem,5.6vw,5.4rem);line-height:1.04;letter-spacing:-.01em}
@@ -82,6 +82,13 @@
   .after{padding:12vh clamp(1.25rem,4vw,4rem) 16vh;text-align:center}
   .after h2{font-size:clamp(1.6rem,3vw,2.6rem);font-weight:500;max-width:20ch;margin:0 auto;color:var(--clay)}
   @media(max-width:820px){.gallery{grid-template-columns:repeat(6,1fr)}.item.span4,.item.span3,.item.span6{grid-column:span 3}}
+  /* MOBILE: bottom strip shows 4 images; they transform into a 2-up grid, the rest stack 2-up below */
+  @media(max-width:680px){
+    .gallery{grid-template-columns:repeat(2,1fr);row-gap:4rem;padding-bottom:4rem}
+    .item.span4,.item.span3,.item.span6{grid-column:span 1}
+    .gallery.is-strip{bottom:2vh;gap:7px;padding:0 7px}
+    .gallery.is-strip .item:nth-child(n+5){display:none}   /* only the first 4 in the strip */
+  }
   @media (prefers-reduced-motion:reduce){.loader{display:none}}
 </style>
 </head>
@@ -221,7 +228,11 @@
     gsap.registerPlugin(Flip);
     const gallery = document.getElementById('gallery');
     const head = document.getElementById('head');
-    const items = gsap.utils.toArray('#gallery .item');     // only the 10 that animate
+    const proj = gallery.closest('.proj');
+    const allItems = gsap.utils.toArray('#gallery .item');
+    const STRIP_N = matchMedia('(max-width:680px)').matches ? 4 : allItems.length;  // mobile: only 4 animate
+    const items = allItems.slice(0, STRIP_N);              // these strip<->grid
+    const restItems = allItems.slice(STRIP_N);             // mobile extras: appear in the grid, hidden in the strip
     let state = 'strip', animating = false, triggerY = 600;
     const BUFFER = 110;                                       // hysteresis gap (prevents ping-pong)
     const liftCss = y => 'calc(2.4vh + ' + (y * 0.9) + 'px)';
@@ -237,7 +248,10 @@
       const s = Flip.getState(items);
       gallery.classList.remove('is-strip');
       gallery.style.bottom = '';
+      if (proj) proj.style.minHeight = gallery.offsetHeight + 'px';   // reserve the expanded height so the reverse never shrinks the page (no scroll jump)
       head.classList.add('gone');
+      if (restItems.length) gsap.fromTo(restItems, { autoAlpha: 0, y: 18 },   // mobile: the non-strip tiles fade up into the grid below
+        { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05, delay: 0.15 });
       Flip.from(s, { duration: 1.1, ease: 'power3.inOut', absolute: true,
         stagger: { amount: 0.7, from: 'start' },
         onComplete: () => { animating = false; onScroll(); } });   // re-check: if the user scrolled back up mid-expand, reverse now
@@ -247,12 +261,12 @@
       // NOT a reversed Flip — the grid->strip change isn't a true reverse, and treating it
       // as one is what kept breaking. Instead: snap back to the strip layout and play a
       // fresh entrance (same idea as the first load), so it always "starts clean".
-      gsap.killTweensOf(items);
+      gsap.killTweensOf(items); gsap.killTweensOf(restItems);
       gallery.classList.add('is-strip');
       gallery.style.bottom = liftCss(window.scrollY);
       head.classList.remove('gone');
-      gsap.fromTo(items, { autoAlpha: 0, yPercent: 8 },
-        { autoAlpha: 1, yPercent: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05,
+      gsap.fromTo(items, { autoAlpha: 0, yPercent: 60 },
+        { autoAlpha: 1, yPercent: 0, duration: 0.7, ease: 'power3.out', stagger: { each: 0.07, from: 'end' },  // rise from a longer distance, right -> left
           onComplete: () => { gsap.set(items, { clearProps: 'transform,opacity,visibility' }); animating = false; onScroll(); } });
     }
     function onScroll(){
@@ -265,7 +279,7 @@
       }
     }
     window.addEventListener('scroll', onScroll, { passive:true });
-    window.addEventListener('resize', computeTrigger);
+    window.addEventListener('resize', () => { computeTrigger(); if (state === 'grid' && proj) { proj.style.minHeight = ''; proj.style.minHeight = gallery.offsetHeight + 'px'; } });
     window.addEventListener('load', computeTrigger);
     computeTrigger(); onScroll();
 
