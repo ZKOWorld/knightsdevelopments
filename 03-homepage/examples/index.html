@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knights — Homepage Hero Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F4F1EA;--ink:#1A1A1A;--clay:#583939;--taupe:#B3A696}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Space Grotesk',sans-serif;background:var(--paper);color:var(--ink);padding:clamp(1.5rem,5vw,5rem)}
+  em{font-family:'Fraunces',serif;font-style:italic}
+  h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;line-height:1}
+  .sub{color:var(--clay);margin:1rem 0 3rem;max-width:60ch}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+  .card{display:block;background:#fff;border:1px solid var(--taupe);border-radius:4px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+  .card .thumb{aspect-ratio:16/9;overflow:hidden;background:#ddd}
+  .card .thumb img{width:100%;height:100%;object-fit:cover}
+  .card .body{padding:1.2rem 1.4rem 1.5rem}
+  .card .n{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
+  .card h2{font-size:1.3rem;font-weight:700;margin:.3rem 0 .5rem;text-transform:uppercase}
+  .card p{font-size:.9rem;color:#5a5650;line-height:1.5}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <h1>Homepage hero — <em>four directions</em></h1>
+  <p class="sub">Open each in turn. They all keep the load-in feel you liked, but now lead with the real property imagery. <strong>Direction 5</strong> is the Mersi-style strip&#8594;grid scroll effect you asked for — start there. Tell me which one (or which bits of each) to take forward.</p>
+  <div class="grid">
+    <a class="card" href="hero-5-strip-to-grid.html" style="grid-column:1/-1">
+      <div class="thumb" style="aspect-ratio:21/9"><img src="img/old-tythe-barn.jpg" alt=""></div>
+      <div class="body"><div class="n">Direction 5 — the one you described</div><h2>Strip &#8594; Grid (Mersi-style)</h2>
+        <p>Hero headline with a horizontal strip of every development along the bottom; as you scroll, the thumbnails expand and reflow into a 3-column grid with hover overlays. Scroll-driven FLIP transition. <em>Scroll slowly to see the morph.</em></p></div>
+    </a>
+    <a class="card" href="hero-1-cinematic.html">
+      <div class="thumb"><img src="img/huxley-hall.jpg" alt=""></div>
+      <div class="body"><div class="n">Direction 1</div><h2>Cinematic Fullscreen</h2>
+        <p>Full-screen property film with a slow Ken-Burns zoom, auto-crossfading between hero developments, kinetic headline overlaid. Maximum drama and immersion.</p></div>
+    </a>
+    <a class="card" href="hero-2-split-index.html">
+      <div class="thumb"><img src="img/maplebrook.jpg" alt=""></div>
+      <div class="body"><div class="n">Direction 2</div><h2>Split Index</h2>
+        <p>Headline + a hover-linked list of developments on the left; a large image fills the right and crossfades as you hover each name. Interactive, projects-first.</p></div>
+    </a>
+    <a class="card" href="hero-3-collage.html">
+      <div class="thumb"><img src="img/great-meadow.jpg" alt=""></div>
+      <div class="body"><div class="n">Direction 3</div><h2>Editorial Collage</h2>
+        <p>Layered, magazine-style composition — several properties floating at different depths with a mouse-parallax, big type woven through. Design-led and distinctive.</p></div>
+    </a>
+    <a class="card" href="hero-4-mosaic.html">
+      <div class="thumb"><img src="img/broadleaves.jpg" alt=""></div>
+      <div class="body"><div class="n">Direction 4</div><h2>Mosaic Reveal</h2>
+        <p>Editorial headline, then a full-width mosaic wall of developments that animates in with hover-zoom and labels. Shows the whole portfolio instantly.</p></div>
+    </a>
+  </div>
+</body>
+</html>

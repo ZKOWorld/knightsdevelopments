@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" width="240" height="170" role="img" aria-label="Knights Developments — KD monogram">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;display=swap');
+      .kd{ font-family:'Fraunces','Times New Roman',Georgia,serif; font-weight:600; }
+    </style>
+  </defs>
+  <text class="kd" x="120" y="128" font-size="140" letter-spacing="-5" text-anchor="middle" fill="#583939">KD</text>
+</svg>

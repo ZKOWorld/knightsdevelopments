@@ -97,6 +97,23 @@ gsap.to('.strip-track', {
 
 ---
 
+## Exact mechanics (from the 44s recording + live DOM inspection)
+
+**Stack:** GSAP + **Lenis** (smooth scroll) + Webflow + jQuery + **Webflow IX2** interactions. No ScrollTrigger/Flip.
+
+**Load-in sequence (~0–3s):**
+1. Dark intro with the `MERSI` wordmark.
+2. Headline `QUIET LUXURY / INTERIORS SHAPED / BY TRUE STORIES` reveals with a **masked line rise** (each line slides up from a clip, small stagger).
+3. The bottom **strip** of thumbnails fades/rises in.
+
+**Two-state DOM structure (the clever bit):**
+- **`grid__state__1`** — the hero **strip**: a full-bleed grid of **portrait thumbnails, aspect ≈ 0.69 (2:3)**, ~6 across, pinned near the bottom of the 100vh hero. Sits in `section.projets`.
+- **`grid__state_2`** — the big grid below, in `section.projets-copy`. Built from `grid__state__2__row` rows that **alternate 3-up and 4-up**: 3-up cells ≈ 832×988 (AR 0.84), 4-up cells ≈ 620×732 (AR 0.85). All large **portrait ≈ 5:6**, full-bleed, ~10px gaps.
+
+**The transition is NOT a global scroll-scrub.** The strip simply scrolls up with the page; the big grid below **reveals per-element as each row scrolls into view** (IX2 "scroll into view" = an entrance trigger per item: scale/clip + fade). Combined with Lenis smooth scroll this reads as the strip "handing off" into the expanding grid. So the right model to copy is **smooth-scroll + per-row reveal-on-enter with a small left-to-right ripple**, not a scrubbed FLIP.
+
+**Implemented in:** `03-homepage/examples/hero-5-strip-to-grid.html`.
+
 ## What to borrow for Knights
 - **This is the model for Knights' Projects page.** Big editorial intro line + **filter tabs** (Knights' natural filters: *All · Launching Soon · Coming Soon · Sold*, and/or by location *Marlow · Warfield · Seer Green · Amersham · Wheathampstead*) + a warm image-led grid with name + status under each tile.
 - The **oatmeal/sage/taupe natural palette** is a strong candidate for Knights' rural-luxury brand (warmer than Andre's stark white, less editorial-magazine than Felix).

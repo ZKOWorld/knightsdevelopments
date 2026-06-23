@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 84" width="720" height="84" role="img" aria-label="Knights Developments">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&amp;display=swap');
+      .wm{ font-family:'Fraunces','Times New Roman',Georgia,serif; font-weight:400; }
+    </style>
+  </defs>
+  <text class="wm" x="10" y="60" font-size="56" fill="#583939">Knights Developments</text>
+</svg>
