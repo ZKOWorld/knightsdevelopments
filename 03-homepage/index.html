@@ -176,7 +176,7 @@
       </h1>
       <div class="filter"><span>All</span><span>Launching</span><span>Coming&nbsp;Soon</span><span>Sold</span></div>
     </div>
-    <a class="seeall" id="seeAll">See all developments</a>
+    <a class="seeall" id="seeAll" data-cursor="Explore">See all developments</a>
   </section>
 
   <!-- TOP: the 10 that animate (rows 3-4-3) -->
@@ -239,16 +239,21 @@
       gallery.style.bottom = '';
       head.classList.add('gone');
       Flip.from(s, { duration: 1.1, ease: 'power3.inOut', absolute: true,
-        stagger: { amount: 0.7, from: 'start' }, onComplete: () => animating = false });
+        stagger: { amount: 0.7, from: 'start' },
+        onComplete: () => { animating = false; onScroll(); } });   // re-check: if the user scrolled back up mid-expand, reverse now
     }
     function toStrip(){
       if (state==='strip' || animating) return; animating = true; state = 'strip';
-      const s = Flip.getState(items);
+      // NOT a reversed Flip — the grid->strip change isn't a true reverse, and treating it
+      // as one is what kept breaking. Instead: snap back to the strip layout and play a
+      // fresh entrance (same idea as the first load), so it always "starts clean".
+      gsap.killTweensOf(items);
       gallery.classList.add('is-strip');
-      gallery.style.bottom = liftCss(window.scrollY);      // lift via bottom (Flip-safe), not transform
+      gallery.style.bottom = liftCss(window.scrollY);
       head.classList.remove('gone');
-      Flip.from(s, { duration: 0.9, ease: 'power3.inOut', absolute: true,
-        stagger: { amount: 0.7, from: 'end' }, onComplete: () => { animating = false; onScroll(); } });
+      gsap.fromTo(items, { autoAlpha: 0, yPercent: 8 },
+        { autoAlpha: 1, yPercent: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05,
+          onComplete: () => { gsap.set(items, { clearProps: 'transform,opacity,visibility' }); animating = false; onScroll(); } });
     }
     function onScroll(){
       const y = window.scrollY;
@@ -299,5 +304,6 @@
       window.addEventListener('load', () => setTimeout(revealLogo, 3000));
     }
   </script>
+  <script src="js/cursor.js"></script>
 </body>
 </html>
