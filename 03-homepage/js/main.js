@@ -7,6 +7,24 @@
   'use strict';
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const page = document.body.dataset.page || 'home';
+
+  // Reveal the page without motion. The dark loader / title-card overlays sit
+  // on top of everything (z-index 9999) and are normally lifted at the end of
+  // the intro timeline. If that timeline can't run, this must — otherwise the
+  // visitor is left staring at a blank overlay.
+  function revealStatic() {
+    document.querySelectorAll('.loader, .titlecard').forEach(el => { el.style.display = 'none'; });
+    document.querySelectorAll('.line > span').forEach(el => { el.style.transform = 'none'; });
+  }
+
+  // GSAP + ScrollTrigger drive every path below. If the CDN failed to load
+  // (blocked network, offline, ad-blocker, CDN outage) do NOT throw and trap
+  // the page behind the loader — show the static content instead.
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    if (document.readyState === 'complete') revealStatic();
+    else window.addEventListener('load', revealStatic);
+    return;
+  }
   gsap.registerPlugin(ScrollTrigger);
 
   let lenis;
@@ -139,34 +157,40 @@
   }
 
   window.addEventListener('load', () => {
-    buildParallax();
-    buildProjectIndex();
-    buildFilters();
+    try {
+      buildParallax();
+      buildProjectIndex();
+      buildFilters();
 
-    if (reduced) {
-      document.querySelectorAll('.loader,.titlecard').forEach(el => el.style.display = 'none');
-      gsap.set('.line > span', { yPercent: 0 });
-      initLenis();
-      return;
-    }
+      if (reduced) {
+        revealStatic();
+        initLenis();
+        return;
+      }
 
-    if (page === 'home') {
-      runHomeIntro();
-      revealLines('.statement', true);
-      revealLines('.recognition', true);
-      revealBatch('.stat', '.stats');
-      revealBatch('.feature', '.featured');
-      revealBatch('.awards li', '.awards');
-    } else if (page === 'projects') {
-      initLenis();
-      revealLines('.projects-intro', false);
-      revealBatch('.tile', '.grid');
-    } else if (page === 'project') {
-      runTitlecard();
-      revealBatch('.fact', '.facts');
-      revealLines('.story', true);
-      revealBatch('.gallery__item', '.gallery');
-    } else {
+      if (page === 'home') {
+        runHomeIntro();
+        revealLines('.statement', true);
+        revealLines('.recognition', true);
+        revealBatch('.stat', '.stats');
+        revealBatch('.feature', '.featured');
+        revealBatch('.awards li', '.awards');
+      } else if (page === 'projects') {
+        initLenis();
+        revealLines('.projects-intro', false);
+        revealBatch('.tile', '.grid');
+      } else if (page === 'project') {
+        runTitlecard();
+        revealBatch('.fact', '.facts');
+        revealLines('.story', true);
+        revealBatch('.gallery__item', '.gallery');
+      } else {
+        initLenis();
+      }
+    } catch (err) {
+      // A runtime error must never leave the dark overlay covering the page.
+      console.error('Knights: intro failed — showing static page.', err);
+      revealStatic();
       initLenis();
     }
   });
