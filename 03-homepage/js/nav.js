@@ -26,7 +26,7 @@
   if (scrim) scrim.addEventListener('click', () => setOpen(false));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
   document.querySelectorAll('#navOverlay a, #navDrawer a, #pillLinks a')
-    .forEach(a => a.addEventListener('click', () => setOpen(false)));
+    .forEach(a => a.addEventListener('click', e => { if (a.getAttribute('href') === '#') e.preventDefault(); setOpen(false); }));
 
   // style 2 drawer: photo crossfades on hover (Andre's coupled list)
   const imgs = document.querySelectorAll('#navPreview img');
