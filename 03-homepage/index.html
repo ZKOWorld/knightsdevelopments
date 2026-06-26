@@ -354,11 +354,15 @@
       if (proj) proj.style.minHeight = gallery.offsetHeight + 'px';   // reserve the expanded height so the reverse never shrinks the page (no scroll jump)
       if (lenis && lenis.resize) lenis.resize();                      // tell Lenis the new height now, so it never clamps/jumps the scroll mid-gesture
       head.classList.add('gone');
-      if (restItems.length) gsap.fromTo(restItems, { autoAlpha: 0, y: 18 },   // mobile: the non-strip tiles fade up into the grid below
-        { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.05, delay: 0.15 });
-      Flip.from(s, { duration: 1.1, ease: 'power3.inOut', absolute: true,
+      // mobile: the extra tiles stay BELOW, in flow (their space is held via visibility, so they
+      // never reflow up); they just fade in. The first four flip into the reserved 2x2 gap above.
+      // Using absolute:true on mobile is what pulled the four out of flow and let the rest slide
+      // up and clash — so only use absolute when there are no tiles below (desktop).
+      if (restItems.length) gsap.fromTo(restItems, { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.6, ease: 'power2.out', stagger: 0.05, delay: 0.25 });
+      Flip.from(s, { duration: 1.1, ease: 'power3.inOut', absolute: restItems.length === 0,
         stagger: { amount: 0.7, from: 'start' },
-        onComplete: () => { animating = false; onScroll(); } });   // re-check: if the user scrolled back up mid-expand, reverse now
+        onComplete: () => { animating = false; onScroll(); } });   // re-check: scrolled back up mid-expand -> reverse now
     }
     function toStrip(){
       if (state==='strip' || animating) return; animating = true; state = 'strip';

@@ -13,7 +13,8 @@
 
   var css = '' +
     'html.kd-has-cursor, html.kd-has-cursor *{cursor:none}' +
-    '@media (hover:none),(pointer:coarse){html.kd-has-cursor,html.kd-has-cursor *{cursor:auto}.kd-cursor{display:none}}' +
+    '@media (hover:none),(pointer:coarse){html.kd-has-cursor,html.kd-has-cursor *{cursor:auto}.kd-cursor{display:none!important}}' +
+    '@media (max-width:900px){html.kd-has-cursor,html.kd-has-cursor *{cursor:auto}.kd-cursor{display:none!important}}' +
     '.kd-cursor{position:fixed;top:0;left:0;width:12px;height:12px;border-radius:50%;' +
       'background:#ECE6DD;pointer-events:none;z-index:9999;mix-blend-mode:difference;' +
       'display:flex;align-items:center;justify-content:center;' +
