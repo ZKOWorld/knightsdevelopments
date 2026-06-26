@@ -8,7 +8,7 @@
 (function () {
   'use strict';
   const root = document.documentElement;
-  if (!root.dataset.nav) root.dataset.nav = '1';
+  if (!root.dataset.nav) root.dataset.nav = '2';
 
   const menuToggle = document.getElementById('menuToggle');
   const pill = document.getElementById('pill');
@@ -31,7 +31,7 @@
   // style 2 drawer: photo crossfades on hover (Andre's coupled list)
   const imgs = document.querySelectorAll('#navPreview img');
   const plabel = document.getElementById('navPlabel');
-  const labels = { projects: 'Selected developments', about: 'Building since 2009', contact: 'Get in touch', enquire: 'Register your interest' };
+  const labels = { home: 'Unique homes in Buckinghamshire', projects: 'Fifteen developments', about: 'The studio since 2009', contact: 'Get in touch', enquire: 'Register your interest' };
   document.querySelectorAll('#navDrawer a').forEach(a => a.addEventListener('mouseenter', () => {
     const k = a.dataset.k;
     imgs.forEach(im => im.classList.toggle('show', im.dataset.k === k));

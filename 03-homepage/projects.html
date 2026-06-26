@@ -1,45 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-nav="2">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects — Knights Developments</title>
-  <meta name="description" content="Fifteen unique luxury developments across the Buckinghamshire countryside. Filter by status and location." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:ital,opsz,wght@1,9..144,300;0,9..144,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Knights Developments</title>
+<meta name="description" content="Fifteen unique luxury developments across the Buckinghamshire countryside. Filter by status and location.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 </head>
-<body data-page="projects">
+<body>
 
-  <header class="site-header site-header--solid">
-    <a class="brand" href="index.html">KNIGHTS</a>
-    <nav class="nav">
-      <a href="projects.html" class="is-current">Projects</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+  <header class="site-header">
+    <a class="brand" href="index.html">Knights <span>Developments</span></a>
+    <nav class="nav"><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navDrawer"><span class="lbl-open">Menu</span><span class="lbl-close">Close</span><span class="bars" aria-hidden="true"><i></i><i></i></span></button></nav>
   </header>
+  <div class="nav-scrim" id="navScrim"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <figure class="preview" id="navPreview">
+      <img data-k="home" src="examples/img/huxley-hall.jpg" alt="" class="show">
+      <img data-k="projects" src="examples/img/great-meadow.jpg" alt="">
+      <img data-k="about" src="examples/img/maplebrook.jpg" alt="">
+      <img data-k="contact" src="examples/img/windmill.jpg" alt="">
+      <img data-k="enquire" src="examples/img/willows.jpg" alt="">
+      <figcaption class="plabel" id="navPlabel">Unique homes in Buckinghamshire</figcaption>
+    </figure>
+    <ul>
+      <li><a href="index.html" data-k="home">Home<span class="loc">Welcome</span></a></li>
+      <li><a href="projects.html" class="is-current" data-k="projects">Projects<span class="loc">15 developments</span></a></li>
+      <li><a href="about.html" data-k="about">About<span class="loc">The studio</span></a></li>
+      <li><a href="contact.html" data-k="contact">Contact<span class="loc">Get in touch</span></a></li>
+      <li><a href="enquiry.html" data-k="enquire">Enquire<span class="loc">Register interest</span></a></li>
+    </ul>
+    <div class="dfoot">enquiries@knightsdevelopments.com<br>Marlow &middot; Amersham &middot; Seer Green</div>
+  </aside>
 
-  <main id="smooth-content">
-
-    <!-- ===== EDITORIAL INTRO ===== -->
-    <section class="projects-intro">
-      <h1 class="projects-intro__title">
-        <span class="line"><span>Unique luxury homes,</span></span>
-        <span class="line"><span>shaped by their <em>landscape.</em></span></span>
-      </h1>
-      <p class="projects-intro__sub">Fifteen developments across the Buckinghamshire countryside.</p>
+  <main>
+    <section class="proj-intro">
+      <p class="eyebrow" data-reveal>Projects</p>
+      <h1 class="lines"><span class="ln"><span>Unique luxury homes,</span></span><span class="ln"><span>shaped by their <em>landscape.</em></span></span></h1>
+      <p class="lead" data-reveal="1">Fifteen developments across the Buckinghamshire countryside — from country manors to barn conversions, each finished to the very highest standard.</p>
     </section>
 
-    <!-- ===== FILTER BAR ===== -->
     <div class="filters">
       <div class="filter-group" data-group="status">
         <span class="filter-group__label">Status</span>
         <button data-val="all" class="is-active">All</button>
-        <button data-val="launching">Launching Soon</button>
-        <button data-val="coming">Coming Soon</button>
-        <button data-val="completion">Completion 2026/27</button>
+        <button data-val="launching">Launching</button>
+        <button data-val="coming">Coming soon</button>
+        <button data-val="completion">Completion</button>
         <button data-val="sold">Sold</button>
       </div>
       <div class="filter-group" data-group="loc">
@@ -54,87 +63,46 @@
       <span class="filter-count" id="filterCount"></span>
     </div>
 
-    <!-- ===== PROJECT GRID ===== -->
     <section class="grid" id="grid">
-      <!-- To use real photos: add  style="--img:url('assets/projects/<slug>/cover.jpg')"  to .tile__img -->
-      <a class="tile" href="project.html" data-status="launching" data-loc="marlow">
-        <div class="tile__img" style="--tone:#7a6a55"></div>
-        <div class="tile__meta"><h3>Bramblewood Place</h3><span class="tile__loc">Marlow</span><span class="badge badge--live">Launching Soon</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="completion" data-loc="marlow">
-        <div class="tile__img" style="--tone:#6b5a4a"></div>
-        <div class="tile__meta"><h3>Huxley Hall</h3><span class="tile__loc">Marlow</span><span class="badge badge--soon">Completion 2026</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="launching" data-loc="warfield">
-        <div class="tile__img" style="--tone:#5d6657"></div>
-        <div class="tile__meta"><h3>Foxleigh Place</h3><span class="tile__loc">Warfield</span><span class="badge badge--live">Launching Soon</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="launching" data-loc="warfield">
-        <div class="tile__img" style="--tone:#6a7059"></div>
-        <div class="tile__meta"><h3>Foxleigh Farmhouse</h3><span class="tile__loc">Warfield</span><span class="badge badge--live">Launching Soon</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="completion" data-loc="marlow">
-        <div class="tile__img" style="--tone:#6f6048"></div>
-        <div class="tile__meta"><h3>Brockwell Barn</h3><span class="tile__loc">Marlow</span><span class="badge badge--soon">Completion 2027</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="seer-green">
-        <div class="tile__img" style="--tone:#7b6f5c"></div>
-        <div class="tile__meta"><h3>Maplebrook Manor</h3><span class="tile__loc">Seer Green</span><span class="badge badge--sold">Sold</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="wheathampstead">
-        <div class="tile__img" style="--tone:#6c5b49"></div>
-        <div class="tile__meta"><h3>Bibbs Hall Barns</h3><span class="tile__loc">Wheathampstead</span><span class="badge badge--sold">Sold</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="wheathampstead">
-        <div class="tile__img" style="--tone:#5f6a5a"></div>
-        <div class="tile__meta"><h3>Bibbs Hall Farmhouse</h3><span class="tile__loc">Wheathampstead</span><span class="badge badge--sold">Sold</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="coming" data-loc="marlow">
-        <div class="tile__img" style="--tone:#586154"></div>
-        <div class="tile__meta"><h3>The Willows</h3><span class="tile__loc">Marlow</span><span class="badge badge--soon">Coming Soon</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="coming" data-loc="warfield">
-        <div class="tile__img" style="--tone:#736345"></div>
-        <div class="tile__meta"><h3>Windmill Farm</h3><span class="tile__loc">Warfield</span><span class="badge badge--soon">Coming Soon</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="seer-green">
-        <div class="tile__img" style="--tone:#6b6a52"></div>
-        <div class="tile__meta"><h3>Broadleaves</h3><span class="tile__loc">Seer Green</span><span class="badge badge--sold">Sold</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="seer-green">
-        <div class="tile__img" style="--tone:#6e5d4d"></div>
-        <div class="tile__meta"><h3>Elmhurst Hall</h3><span class="tile__loc">Seer Green</span><span class="badge badge--sold">Sold</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="amersham">
-        <div class="tile__img" style="--tone:#5c6453"></div>
-        <div class="tile__meta"><h3>Great Meadow Barn</h3><span class="tile__loc">Amersham</span><span class="badge badge--sold">Sold</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="amersham">
-        <div class="tile__img" style="--tone:#75664f"></div>
-        <div class="tile__meta"><h3>The Farmhouse</h3><span class="tile__loc">Amersham</span><span class="badge badge--sold">Sold</span></div>
-      </a>
-      <a class="tile" href="project.html" data-status="sold" data-loc="amersham">
-        <div class="tile__img" style="--tone:#6a5a48"></div>
-        <div class="tile__meta"><h3>The Old Tythe Barn</h3><span class="tile__loc">Amersham</span><span class="badge badge--sold">Sold</span></div>
-      </a>
+      <a class="tile" href="project.html?p=bramblewood" data-status="launching" data-loc="marlow"><div class="tile__img"><img src="examples/img/bramblewood.jpg" alt="Bramblewood Place"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Bramblewood Place</h3><span class="tile__loc">Marlow</span></div><span class="badge badge--live">Launching Soon</span></a>
+      <a class="tile" href="project.html?p=foxleigh-place" data-status="launching" data-loc="warfield"><div class="tile__img"><img src="examples/img/foxleigh-place.jpg" alt="Foxleigh Place"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Foxleigh Place</h3><span class="tile__loc">Warfield</span></div><span class="badge badge--live">Launching Soon</span></a>
+      <a class="tile" href="project.html?p=foxleigh-farmhouse" data-status="launching" data-loc="warfield"><div class="tile__img"><img src="examples/img/foxleigh-farmhouse.jpg" alt="Foxleigh Farmhouse"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Foxleigh Farmhouse</h3><span class="tile__loc">Warfield</span></div><span class="badge badge--live">Launching Soon</span></a>
+      <a class="tile" href="project.html?p=the-willows" data-status="coming" data-loc="marlow"><div class="tile__img"><img src="examples/img/willows.jpg" alt="The Willows"><span class="tile__view">View</span></div><div class="tile__meta"><h3>The Willows</h3><span class="tile__loc">Marlow</span></div><span class="badge badge--soon">Coming Soon</span></a>
+      <a class="tile" href="project.html?p=windmill-farm" data-status="coming" data-loc="warfield"><div class="tile__img"><img src="examples/img/windmill.jpg" alt="Windmill Farm"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Windmill Farm</h3><span class="tile__loc">Warfield</span></div><span class="badge badge--soon">Coming Soon</span></a>
+      <a class="tile" href="project.html?p=huxley-hall" data-status="completion" data-loc="marlow"><div class="tile__img"><img src="examples/img/huxley-hall.jpg" alt="Huxley Hall"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Huxley Hall</h3><span class="tile__loc">Marlow</span></div><span class="badge badge--soon">Completion 2026</span></a>
+      <a class="tile" href="project.html?p=brockwell-barn" data-status="completion" data-loc="marlow"><div class="tile__img"><img src="examples/img/brockwell.jpg" alt="Brockwell Barn"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Brockwell Barn</h3><span class="tile__loc">Marlow</span></div><span class="badge badge--soon">Completion 2027</span></a>
+      <a class="tile tile--sold" href="project.html?p=maplebrook-manor" data-status="sold" data-loc="seer-green"><div class="tile__img"><img src="examples/img/maplebrook.jpg" alt="Maplebrook Manor"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Maplebrook Manor</h3><span class="tile__loc">Seer Green</span></div><span class="badge badge--sold">Sold</span></a>
+      <a class="tile tile--sold" href="project.html?p=bibbs-hall-barns" data-status="sold" data-loc="wheathampstead"><div class="tile__img"><img src="examples/img/bibbs-hall-barns.jpg" alt="Bibbs Hall Barns"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Bibbs Hall Barns</h3><span class="tile__loc">Wheathampstead</span></div><span class="badge badge--sold">Sold</span></a>
+      <a class="tile tile--sold" href="project.html?p=bibbs-hall-farmhouse" data-status="sold" data-loc="wheathampstead"><div class="tile__img"><img src="examples/img/bibbs-farmhouse.jpg" alt="Bibbs Hall Farmhouse"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Bibbs Hall Farmhouse</h3><span class="tile__loc">Wheathampstead</span></div><span class="badge badge--sold">Sold</span></a>
+      <a class="tile tile--sold" href="project.html?p=broadleaves" data-status="sold" data-loc="seer-green"><div class="tile__img"><img src="examples/img/broadleaves.jpg" alt="Broadleaves"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Broadleaves</h3><span class="tile__loc">Seer Green</span></div><span class="badge badge--sold">Sold</span></a>
+      <a class="tile tile--sold" href="project.html?p=elmhurst-hall" data-status="sold" data-loc="seer-green"><div class="tile__img"><img src="examples/img/elmhurst.jpg" alt="Elmhurst Hall"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Elmhurst Hall</h3><span class="tile__loc">Seer Green</span></div><span class="badge badge--sold">Sold</span></a>
+      <a class="tile tile--sold" href="project.html?p=great-meadow-barn" data-status="sold" data-loc="amersham"><div class="tile__img"><img src="examples/img/great-meadow.jpg" alt="Great Meadow Barn"><span class="tile__view">View</span></div><div class="tile__meta"><h3>Great Meadow Barn</h3><span class="tile__loc">Amersham</span></div><span class="badge badge--sold">Sold</span></a>
+      <a class="tile tile--sold" href="project.html?p=the-farmhouse" data-status="sold" data-loc="amersham"><div class="tile__img"><img src="examples/img/the-farmhouse.jpg" alt="The Farmhouse"><span class="tile__view">View</span></div><div class="tile__meta"><h3>The Farmhouse</h3><span class="tile__loc">Amersham</span></div><span class="badge badge--sold">Sold</span></a>
+      <a class="tile tile--sold" href="project.html?p=the-old-tythe-barn" data-status="sold" data-loc="amersham"><div class="tile__img"><img src="examples/img/old-tythe-barn.jpg" alt="The Old Tythe Barn"><span class="tile__view">View</span></div><div class="tile__meta"><h3>The Old Tythe Barn</h3><span class="tile__loc">Amersham</span></div><span class="badge badge--sold">Sold</span></a>
       <p class="grid__empty" id="gridEmpty" hidden>No developments match those filters. <button id="gridReset">View all</button></p>
     </section>
 
     <section class="cta">
-      <h2 class="cta__title">Can't see what you're looking for?</h2>
-      <a class="btn" href="mailto:enquiries@knightsdevelopments.com">Register your interest</a>
+      <h2>Can't see what you're <em>looking</em> for?</h2>
+      <a class="btn" href="enquiry.html">Register your interest</a>
     </section>
 
     <footer class="site-footer">
-      <span>© Knights Developments 2026</span>
-      <span>Marlow · Warfield · Seer Green · Wheathampstead · Amersham</span>
+      <div class="wrap site-footer__in">
+        <div class="ft-brand">Knights <em>Developments</em></div>
+        <div class="ft-col"><h4>Developments</h4><p>Marlow<br>Warfield<br>Seer Green<br>Wheathampstead<br>Amersham</p></div>
+        <div class="ft-col"><h4>Explore</h4><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="enquiry.html">Enquire</a></div>
+        <div class="ft-col"><h4>Enquiries</h4><a href="mailto:enquiries@knightsdevelopments.com">enquiries@knightsdevelopments.com</a></div>
+      </div>
+      <div class="wrap ft-base"><span>&copy; Knights Developments 2026</span><span>Unique luxury homes in the Buckinghamshire countryside</span></div>
     </footer>
-
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/cursor.js"></script>
 </body>
 </html>
