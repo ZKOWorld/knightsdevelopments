@@ -142,6 +142,11 @@
   .nav-drawer li .loc{font-family:'Space Grotesk',sans-serif;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);opacity:0;transition:opacity .35s}
   .nav-drawer li a:hover .loc{opacity:.85}
   .nav-drawer .dfoot{margin-top:auto;padding-top:2rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--clay);line-height:2}
+  /* mobile: drawer goes full-width and its content left-aligns with the header logo
+     (same left padding), so the logo no longer overlaps the drawer's edge */
+  @media(max-width:700px){
+    .nav-drawer{width:100vw;padding-left:clamp(1rem,2.5vw,2.5rem);padding-right:clamp(1rem,2.5vw,2.5rem)}
+  }
   .navpill{display:flex;align-items:center;gap:1.2rem}
   .navpill .links{display:inline-grid;grid-template-columns:0fr;transition:grid-template-columns .6s cubic-bezier(.76,0,.24,1)}
   .navpill .links>div{overflow:hidden;min-width:0;display:flex;gap:1.7rem;padding-right:.2rem}
