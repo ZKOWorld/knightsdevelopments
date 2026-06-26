@@ -31,7 +31,7 @@
   .brand .stroke{display:none}
 
   header{position:fixed;top:0;left:0;width:100%;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:1.5rem clamp(1rem,2.5vw,2.5rem)}
-  .brand{position:relative;display:inline-flex;align-items:center}
+  .brand{position:relative;display:inline-flex;align-items:center;transition:transform .7s cubic-bezier(.76,0,.24,1)}
   nav{display:flex;gap:1.6rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;opacity:0}
 
   /* HERO: title+filter centred between the nav and the "See all" link; "See all" sits just above the images */
@@ -127,7 +127,7 @@
   html[data-nav="1"].nav-open .menu-toggle,html[data-nav="1"].nav-open .brand{color:var(--paper)}
   .nav-scrim{position:fixed;inset:0;z-index:54;background:rgba(26,26,26,.32);opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s}
   html[data-nav="2"].nav-open .nav-scrim{opacity:1;visibility:visible}
-  .nav-drawer{position:fixed;top:0;right:0;height:100svh;width:min(460px,88vw);z-index:56;background:var(--paper);box-shadow:-30px 0 80px rgba(26,26,26,.13);transform:translateX(100%);transition:transform .75s cubic-bezier(.76,0,.24,1);display:flex;flex-direction:column;padding:7vh clamp(1.5rem,3vw,2.6rem) 4vh;visibility:hidden}
+  .nav-drawer{position:fixed;top:0;right:0;height:100svh;width:min(460px,88vw);z-index:56;background:var(--paper);box-shadow:-30px 0 80px rgba(26,26,26,.13);transform:translateX(100%);transition:transform .75s cubic-bezier(.76,0,.24,1);display:flex;flex-direction:column;padding:7vh clamp(1rem,2.5vw,2.5rem) 4vh;visibility:hidden}
   html[data-nav="2"] .nav-drawer{visibility:visible}
   html[data-nav="2"].nav-open .nav-drawer{transform:translateX(0)}
   .nav-drawer .preview{position:relative;aspect-ratio:4/3;background:#d8d0c4;overflow:hidden;margin-bottom:2.2rem}
@@ -142,10 +142,11 @@
   .nav-drawer li .loc{font-family:'Space Grotesk',sans-serif;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);opacity:0;transition:opacity .35s}
   .nav-drawer li a:hover .loc{opacity:.85}
   .nav-drawer .dfoot{margin-top:auto;padding-top:2rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--clay);line-height:2}
-  /* mobile: drawer goes full-width and its content left-aligns with the header logo
-     (same left padding), so the logo no longer overlaps the drawer's edge */
+  /* mobile: keep the drawer as a panel (with the left gap); when it opens, slide the header
+     logo to the right so it left-aligns with the drawer content instead of straddling the edge.
+     (drawer padding-left is matched to the header padding below, so the shift = the panel's left offset) */
   @media(max-width:700px){
-    .nav-drawer{width:100vw;padding-left:clamp(1rem,2.5vw,2.5rem);padding-right:clamp(1rem,2.5vw,2.5rem)}
+    html.nav-open .brand{transform:translateX(calc(100vw - min(460px,88vw)))}
   }
   .navpill{display:flex;align-items:center;gap:1.2rem}
   .navpill .links{display:inline-grid;grid-template-columns:0fr;transition:grid-template-columns .6s cubic-bezier(.76,0,.24,1)}
